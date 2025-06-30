@@ -44,11 +44,11 @@ function displayArtifacts(artifacts) {
     artifactElement.innerHTML = `
       <div>
         <h2>${artifact["A"] || "İsim Yok"}</h2>
-        <p><strong>Menşei:</strong> ${artifact["B"] || "Bilinmiyor"}</p>
-        <p><strong>Dönem:</strong> ${artifact["C"] || "Bilinmiyor"}</p>
-        <p><strong>Kültür:</strong> ${artifact["D"] || "Bilinmiyor"}</p>
-        <p><strong>Malzeme:</strong> ${artifact["E"] || "Bilinmiyor"}</p>
-        <p><strong>Fotoğraf:</strong> ${artifact["F"] || "Bilinmiyor"}</p>
+        <p><strong>Origin:</strong> ${artifact["B"] || "Bilinmiyor"}</p>
+        <p><strong>Time:</strong> ${artifact["C"] || "Bilinmiyor"}</p>
+        <p><strong>Category:</strong> ${artifact["D"] || "Bilinmiyor"}</p>
+        <p><strong>Material:</strong> ${artifact["E"] || "Bilinmiyor"}</p>
+        <p><strong>Picture:</strong> ${artifact["F"] || "Bilinmiyor"}</p>
         <p><strong>Link:</strong> ${artifact["G"] || "Bilinmiyor"}</p>
 
       </div>
