@@ -4,10 +4,9 @@ async function fetchArtifacts() {
   try {
     const response = await fetch(API_URL);
     const artifacts = await response.json();
-    console.log("Gelen veri:", artifacts); // 👈 Konsolda veriyi kontrol edin
     displayArtifacts(artifacts);
   } catch (error) {
-    console.error("Hata:", error);
+    console.error("Veri çekme hatası:", error);
   }
 }
 
@@ -18,17 +17,17 @@ function displayArtifacts(artifacts) {
     const artifactElement = document.createElement("div");
     artifactElement.className = "artifact";
     artifactElement.innerHTML = `
-      <img src="${artifact.image_link}" alt="${artifact.name}">
+      <img src="${artifact.imageLink}" alt="${artifact.name}">
       <div>
         <h2>${artifact.name}</h2>
-        <p><strong>Description:</strong> ${artifact.short_description}</p>
+        <p><strong>Description:</strong> ${artifact.shortDescription}</p>
         <p><strong>Findspot:</strong> ${artifact.findspot}</p>
         <p><strong>Date:</strong> ${artifact.date}</p>
-        <p><strong>Museum:</strong> ${artifact.museum}</p>
       </div>
     `;
     container.appendChild(artifactElement);
   });
 }
 
+// Sayfa yüklendiğinde verileri çek
 document.addEventListener("DOMContentLoaded", fetchArtifacts);
