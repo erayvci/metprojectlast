@@ -2,15 +2,31 @@ const API_URL = "https://api.sheetbest.com/sheets/75cecd64-303e-43b7-a471-f82908
 
 async function fetchArtifacts() {
   try {
-    const response = await fetch(API_URL);
+    // CORS desteği için ek header
+    const response = await fetch(API_URL, {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    });
+    
+    if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+    
     const artifacts = await response.json();
-    console.log("API'den gelen veri:", artifacts); // Veriyi kontrol edin
+    console.log("API Yanıtı:", artifacts); // Konsolda veriyi kontrol edin
+    
+    if (!artifacts || artifacts.length === 0) {
+      throw new Error("API boş veri döndürdü!");
+    }
+    
     displayArtifacts(artifacts);
   } catch (error) {
-    console.error("Hata:", error);
+    console.error("Kritik Hata:", error);
     document.getElementById("museum-container").innerHTML = `
-      <div style="color: red; padding: 20px;">
-        <p>Veri yüklenemedi. Lütfen konsolu kontrol edin (F12 > Console).</p>
+      <div style="color: red; padding: 20px; border: 1px solid red;">
+        <h3>Hata Oluştu!</h3>
+        <p>${error.message}</p>
+        <p>Lütfen konsolu kontrol edin (F12 > Console).</p>
       </div>
     `;
   }
@@ -23,6 +39,8 @@ function displayArtifacts(artifacts) {
   artifacts.forEach(artifact => {
     const artifactElement = document.createElement("div");
     artifactElement.className = "artifact";
+    
+    // Eser bilgilerini göster (API'deki key'lerle birebir eşleşmeli)
     artifactElement.innerHTML = `
       <div>
         <h2>${artifact["Item"] || "İsim Yok"}</h2>
@@ -31,9 +49,11 @@ function displayArtifacts(artifacts) {
         <p><strong>Kültür:</strong> ${artifact["culture"] || "Bilinmiyor"}</p>
         <p><strong>Malzeme:</strong> ${artifact["material type"] || "Bilinmiyor"}</p>
       </div>
+      <hr>
     `;
     container.appendChild(artifactElement);
   });
 }
 
-document.addEventListener("DOMContentLoaded", fetchArtifacts);
+// Sayfa yüklendiğinde çalıştır
+window.addEventListener("load", fetchArtifacts);
