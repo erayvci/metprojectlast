@@ -43,11 +43,11 @@ function displayArtifacts(artifacts) {
     // Eser bilgilerini göster (API'deki key'lerle birebir eşleşmeli)
     artifactElement.innerHTML = `
       <div>
-        <h2>${artifact["Item"] || "İsim Yok"}</h2>
-        <p><strong>Menşei:</strong> ${artifact["Origin of Place"] || "Bilinmiyor"}</p>
-        <p><strong>Dönem:</strong> ${artifact["time period"] || "Bilinmiyor"}</p>
-        <p><strong>Kültür:</strong> ${artifact["culture"] || "Bilinmiyor"}</p>
-        <p><strong>Malzeme:</strong> ${artifact["material type"] || "Bilinmiyor"}</p>
+        <h2>${artifact["A"] || "İsim Yok"}</h2>
+        <p><strong>Menşei:</strong> ${artifact["B"] || "Bilinmiyor"}</p>
+        <p><strong>Dönem:</strong> ${artifact["C"] || "Bilinmiyor"}</p>
+        <p><strong>Kültür:</strong> ${artifact["D"] || "Bilinmiyor"}</p>
+        <p><strong>Malzeme:</strong> ${artifact["E"] || "Bilinmiyor"}</p>
       </div>
       <hr>
     `;
