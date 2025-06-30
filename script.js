@@ -48,6 +48,9 @@ function displayArtifacts(artifacts) {
         <p><strong>Dönem:</strong> ${artifact["C"] || "Bilinmiyor"}</p>
         <p><strong>Kültür:</strong> ${artifact["D"] || "Bilinmiyor"}</p>
         <p><strong>Malzeme:</strong> ${artifact["E"] || "Bilinmiyor"}</p>
+        <p><strong>Fotoğraf:</strong> ${artifact["F"] || "Bilinmiyor"}</p>
+        <p><strong>Link:</strong> ${artifact["G"] || "Bilinmiyor"}</p>
+
       </div>
       <hr>
     `;
